@@ -40,7 +40,7 @@
             }
 
             axios.post("https://crudcrud.com/api/db9a998b6f63493bba8a4b0fde86cd2c/APPOINTMENTDATA",obj )
-            .then((response)=>{
+               .then((response)=>{
                 console.log(response);
             })
             .catch((err)=>{
@@ -51,6 +51,38 @@
             showUserOnScreen(obj);
 
         }
+        window.addEventListener("DOMContentLoaded",()=>{
+            axios.get("https://crudcrud.com/api/db9a998b6f63493bba8a4b0fde86cd2c/APPOINTMENTDATA")
+               .then((response)=>{
+                   console.log(response);
+                   for(var i =0;i<response.data.length;i++){
+                        showUserOnScreen(response.data[i])
+                   }
+
+               })
+               .catch((error)=>{
+                  console.log(error)
+               })
+             /*  const localStorageobj=localstorage
+               const localstorageKeys =Object.keys(localStorageobj)
+               for(i =0;i<localstorageKeys.length;i++){
+                  const key =localstorageKeys[i]
+                  const userDetailsString=localStorageobj[i]
+                  const userDetailsObj =json.parse(userDetailsObj)
+                  showUserOnScreen(userDetailsObj)
+               }*/
+
+
+               
+            
+
+        })
+
+
+
+
+
+
         function showUserOnScreen(obj){
             const parentElem=document.getElementById('listofitems');
             const childElem =document.createElement('li');
